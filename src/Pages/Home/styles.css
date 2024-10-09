@@ -1,0 +1,196 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+
+  background: rgb(121, 91, 34);
+  background: linear-gradient(
+    0deg,
+    rgba(121, 91, 34, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
+  width: 100%;
+  padding: 0;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  overflow-y: hidden;
+}
+
+h1 {
+  text-decoration: underline;
+  font-size: 40px;
+}
+
+.barre {
+  padding: 10px 10em 10px 10em;
+  background: rgba(79, 94, 250, 0.2);
+  user-select: none;
+  border-radius: 10px 10px 0px 0px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px -1px 5px black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.apps-button {
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+}
+.button-desk {
+  height: 3em;
+  width: 3em;
+  background: transparent;
+  border: none;
+}
+
+.button-desk img {
+  width: 3em;
+  height: 3em;
+}
+
+.Projets {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin: 2em 2em;
+}
+
+.app-docs img {
+  width: 4em;
+}
+
+.app-docs a {
+  text-decoration: none;
+}
+
+.app-docs h2 {
+  color: white;
+  font-size: 15px;
+  margin-bottom: 2em;
+}
+
+.Apps h2 {
+  color: white;
+  font-size: 15px;
+  margin-bottom: 2em;
+}
+
+.Apps {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Minesweeper Styling */
+.board {
+  display: inline-block;
+  border: 2px solid silver;
+  background-color: lightgray;
+  padding: 10px;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+  font-family: sans-serif;
+  line-height: 30px;
+  border: 2px solid silver;
+  background-color: #bdbdbd;
+  box-shadow: inset 1px 1px 0 white, inset -1px -1px 0 #7d7d7d;
+}
+
+.cell.hidden {
+  background-color: #cccccc;
+}
+
+.cell.is-mine {
+  background-color: red;
+}
+
+.cell.is-flag {
+  background-color: yellow;
+}
+
+.clear {
+  clear: both;
+}
+
+.game-info {
+  margin-bottom: 10px;
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+.game-info .info {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.modal-window {
+  width: 600px;
+  height: 400px;
+  z-index: 100;
+  cursor: move;
+}
+
+.modal-header {
+  background-color: #191919;
+  color: white;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+  border-radius: 10px 10px 0px 0px;
+  user-select: none;
+  box-shadow: inset 0px -3px 5px rgb(12, 12, 12);
+}
+
+.close-btn {
+  background-color: #191919;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background-color: #95020298;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.modal-content {
+  padding-bottom: 0px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.iframe-content {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: flex;
+  justify-content: center;
+}

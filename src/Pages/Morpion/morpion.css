@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+h4 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+h5 {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+h6 {
+  margin-top: 0;
+  font-size: 12px;
+}
+
+code {
+  font-size: 1.2em;
+}
+
+ul {
+  padding-inline-start: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.square {
+  background: transparent;
+  border: 3px solid white;
+  border-radius: 5px;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 2em;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 2em;
+  color: white;
+  font-size: 2em;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.square.X {
+  color: rgb(1, 1, 132); /* Couleur des X */
+}
+
+.square.O {
+  color: rgb(144, 0, 0); /* Couleur des O */
+}
+
+.status {
+  height: 30px;
+  margin-top: -30px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5em;
+  color: white;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.game {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: rgb(217, 215, 34);
+  background: linear-gradient(
+    0deg,
+    rgba(217, 215, 34, 1) 0%,
+    rgba(213, 34, 157, 1) 100%
+  );
+  text-align: center;
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+.game-info {
+  margin-top: 1em;
+  margin-left: 20px;
+}
+
+.game_info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3em;
+  height: 10em;
+  align-items: center;
+  width: 15em;
+  font-family: "Press Start 2P", cursive;
+}
+
+.title-Morpion {
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.scoreboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.score_joueurs {
+  font-size: 2em;
+  cursor: pointer;
+  background-color: #292929;
+  box-shadow: inset 0px 0px 20px rgb(17, 17, 17);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  padding-top: 10px;
+  padding-right: 10px;
+  color: rgb(146, 0, 0);
+  margin-top: 30px;
+}
+
+.signe {
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.replay-button:hover {
+  box-shadow: 5px 5px 0px white;
+}
