@@ -1,10 +1,12 @@
 import "./styles.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
 export default function Home() {
   const [count, setCount] = useState(0);
+  const [userInput, setUserInput] = useState([]);
+  const code = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "KeyB", "KeyQ", "NumpadAdd"];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ x: 100, y: 100 });
@@ -20,6 +22,29 @@ export default function Home() {
   const [pongPosition, setpongPosition] = useState({ x: 200, y: 200 });
   const [draggingPong, setDraggingPong] = useState(false);
   const [initialPongPosition, setInitialPongPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (userInput.length < code.length) {
+        setUserInput((prev) => [...prev, e.code]);
+        console.log(userInput);
+      }
+  
+      if (userInput.length + 1 === code.length) {
+        if (JSON.stringify([...userInput, e.code]) === JSON.stringify(code)) {
+          alert("Secret"); // Trigger your secret action here
+        }
+        // Reset the input
+        setUserInput([]);
+      }
+    };
+  
+    window.addEventListener("keydown", handleKeyPress);
+  
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [userInput]);
   
   // Pong modal drag handlers
   const handleMouseDownPong = (e) => {
@@ -119,8 +144,8 @@ export default function Home() {
               path="/realisations"
             />
             <Apps
-              nom="Jeux"
-              image="https://img.icons8.com/?size=512&id=dINnkNb1FBl4&format=png"
+              nom="Jeux Godot"
+              image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.diginoodles.com%2Fuser%2Fpages%2F04.projects%2F04.godot-game-engine%2FGodot_icon.svg.png&f=1&nofb=1&ipt=2cb73b023ca56610dbe9b70cf2f10c7d1c700a191d315e10789a93d07ba98d99&ipo=images"
               path="/jeux"
             />
             <Apps
