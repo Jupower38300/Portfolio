@@ -9,8 +9,7 @@ export default function App() {
     <>
       <Routes>
         <Route index element={<Home />} /> {/* Page d'accueil */}
-        <Route path="/morpion" element={<Morpion />} />{" "}
-        {/* Route vers Morpion */}
+        <Route path="/morpion" element={<Morpion />} />{/* Route vers Morpion */}
         <Route path="/pong" element={<Pong />} /> {/* Route vers Pong */}
         <Route path="/demineur" element={<Demine />} />
       </Routes>
