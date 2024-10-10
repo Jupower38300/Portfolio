@@ -16,7 +16,7 @@ function Pong() {
   const playerPaddleSpeed = 10;
   const botPaddleSpeed = 5;
   const ballRadius = 12;
-  const canvasWidth = 700;
+  const canvasWidth = 600;
   const canvasHeight = 300;
 
   const handleKeyDown = (e) => {

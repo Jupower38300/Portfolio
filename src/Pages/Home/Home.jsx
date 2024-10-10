@@ -1,10 +1,11 @@
 import "./styles.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import pong from "/project/workspace/src/Image/Pong.png";
+
 
 export default function Home() {
   const [count, setCount] = useState(0);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ x: 100, y: 100 });
   const [dragging, setDragging] = useState(false);
@@ -13,11 +14,35 @@ export default function Home() {
   const [isMorpionModalOpen, setIsMorpionModalOpen] = useState(false);
   const [morpionPosition, setMorpionPosition] = useState({ x: 150, y: 150 });
   const [draggingMorpion, setDraggingMorpion] = useState(false);
-  const [initialMorpionPosition, setInitialMorpionPosition] = useState({
-    x: 0,
-    y: 0,
-  });
+  const [initialMorpionPosition, setInitialMorpionPosition] = useState({ x: 0, y: 0 });
 
+  const [isPongModalOpen, setIsPongModalOpen] = useState(false);
+  const [pongPosition, setpongPosition] = useState({ x: 200, y: 200 });
+  const [draggingPong, setDraggingPong] = useState(false);
+  const [initialPongPosition, setInitialPongPosition] = useState({ x: 0, y: 0 });
+  
+  // Pong modal drag handlers
+  const handleMouseDownPong = (e) => {
+    setDraggingPong(true);
+    setInitialPongPosition({
+      x: e.clientX - pongPosition.x,
+      y: e.clientY - pongPosition.y,
+    });
+  };
+  
+  const handleMouseMovePong = (e) => {
+    if (draggingPong) {
+      setpongPosition({
+        x: e.clientX - initialPongPosition.x,
+        y: e.clientY - initialPongPosition.y,
+      });
+    }
+  };
+  
+  const handleMouseUpPong = () => {
+    setDraggingPong(false);
+  };
+  
   // Functions for Démineur Modal
   const handleMouseDown = (e) => {
     setDragging(true);
@@ -117,7 +142,12 @@ export default function Home() {
               path="#"
               onClick={() => setIsMorpionModalOpen(true)} // Open Morpion modal on click
             />
-            <Apps nom="Pong" image={pong} path="/pong" />
+            <Apps
+              nom="Pong"
+              image="https://i.ibb.co/SQvDf36/Pong.png"
+              path="#"
+              onClick={() => setIsPongModalOpen(true)} // Open Pong modal on click
+            />
           </div>
         </div>
       </div>
@@ -190,6 +220,39 @@ export default function Home() {
           </div>
         </div>
       )}
+
+    {/* Pong Modal Window */}
+    {isPongModalOpen && (
+      <div
+        className="modal-window"
+        style={{
+          top: `${pongPosition.y}px`,
+          left: `${pongPosition.x}px`,
+          position: "absolute",
+        }}
+        onMouseMove={handleMouseMovePong}
+        onMouseUp={handleMouseUpPong}
+      >
+        <div className="modal-header" onMouseDown={handleMouseDownPong}>
+          <span>🏓 Pong</span>
+          <button
+            className="close-btn"
+            onClick={() => setIsPongModalOpen(false)}
+          >
+            <strong>X</strong>
+          </button>
+        </div>
+        <div className="modal-content">
+          <iframe
+            src="/pong"
+            title="Pong"
+            className="iframe-content"
+          ></iframe>
+        </div>
+      </div>
+    )}
+
+
     </div>
   );
 }
