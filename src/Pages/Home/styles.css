@@ -15,6 +15,7 @@
   width: 100%;
   padding: 0;
   height: 100vh;
+  user-select: none;
 }
 
 body {
@@ -185,6 +186,7 @@ h1 {
 .modal-content {
   padding-bottom: 0px;
   border-radius: 10px 10px 0px 0px;
+  user-select:none;
 }
 
 .iframe-content {
