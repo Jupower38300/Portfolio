@@ -4,24 +4,24 @@ import { Link } from "react-router-dom";
 import PongModal from "./components/PongModal";
 import MorpionModal from "./components/MorpionModal";
 import DemineurModal from "./components/DemineurModale";
+import SitesModal from './components/SitesModal'; // Adjust the import path as necessary
 
 export default function Home() {
-
   const [userInput, setUserInput] = useState([]);
   const code = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "KeyB", "KeyQ", "NumpadAdd"];
 
   const [isDemineurModalOpen, setIsDemineurModalOpen] = useState(false);
   const [isMorpionModalOpen, setIsMorpionModalOpen] = useState(false);
   const [isPongModalOpen, setIsPongModalOpen] = useState(false);
+  const [isSiteModalOpen, setIsSiteModalOpen] = useState(false);
 
-  //Code pour le mot de passe
+  // Code for the password
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (userInput.length < code.length) {
         setUserInput((prev) => [...prev, e.code]);
-        console.log(userInput);
       }
-  
+
       if (userInput.length + 1 === code.length) {
         if (JSON.stringify([...userInput, e.code]) === JSON.stringify(code)) {
           alert("Secret"); // Trigger your secret action here
@@ -30,9 +30,9 @@ export default function Home() {
         setUserInput([]);
       }
     };
-  
+
     window.addEventListener("keydown", handleKeyPress);
-  
+
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
@@ -64,7 +64,6 @@ export default function Home() {
       <div className="Main">
         <div className="Apps">
           <div className="column">
-
             <Apps
               nom="Réalisations"
               image="https://img.icons8.com/?size=512&id=dINnkNb1FBl4&format=png"
@@ -76,23 +75,28 @@ export default function Home() {
               image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.diginoodles.com%2Fuser%2Fpages%2F04.projects%2F04.godot-game-engine%2FGodot_icon.svg.png&f=1&nofb=1&ipt=2cb73b023ca56610dbe9b70cf2f10c7d1c700a191d315e10789a93d07ba98d99&ipo=images"
               path="/jeux"
             />
-            
+
             <Apps
               nom="Sites"
               image="https://img.icons8.com/?size=512&id=dINnkNb1FBl4&format=png"
-              path="/sites"
+              path="#"
+              onClick={() => setIsSiteModalOpen(true)} // Open Sites modal on click
             />
 
+            <SitesModal 
+              isOpen={isSiteModalOpen}
+              closeModal={() => setIsSiteModalOpen(false)}
+            />
           </div>
-          <div className="column">
 
+          <div className="column">
             <Apps
               nom="Démineur"
               image="https://static-00.iconduck.com/assets.00/minesweeper-icon-1935x2048-kwrajscs.png"
               path="#"
               onClick={() => setIsDemineurModalOpen(true)} // Open Démineur modal on click
-            />
-
+            />            
+            
             <DemineurModal 
               isOpen={isDemineurModalOpen}
               closeModal={() => setIsDemineurModalOpen(false)}
@@ -119,7 +123,7 @@ export default function Home() {
 
             <PongModal
               isOpen={isPongModalOpen}
-              closeModal={() => setIsPongModalOpen(false)} // Ferme la modale Pong
+              closeModal={() => setIsPongModalOpen(false)} // Close Pong modal
             />
           </div>
         </div>

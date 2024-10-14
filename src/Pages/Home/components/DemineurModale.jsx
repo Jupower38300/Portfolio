@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 
 export default function DemineurModal({ isOpen, closeModal }) {
   const [modalPosition, setModalPosition] = useState({ x: 100, y: 100 });
@@ -26,6 +27,22 @@ export default function DemineurModal({ isOpen, closeModal }) {
     setDragging(false);
   };
 
+  // Use the same approach to listen for mouse events at the document level
+  useEffect(() => {
+    if (dragging) {
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+    } else {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    }
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [dragging]);
+
   if (!isOpen) return null;
 
   return (
@@ -36,8 +53,6 @@ export default function DemineurModal({ isOpen, closeModal }) {
         left: `${modalPosition.x}px`,
         position: "absolute",
       }}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
     >
       <div className="modal-header" onMouseDown={handleMouseDown}>
         <span>💣 Démineur</span>

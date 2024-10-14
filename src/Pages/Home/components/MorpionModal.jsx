@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function MorpionModal({ isOpen, closeModal }) {
   const [morpionPosition, setMorpionPosition] = useState({ x: 150, y: 150 });
@@ -26,6 +26,22 @@ export default function MorpionModal({ isOpen, closeModal }) {
     setDraggingMorpion(false);
   };
 
+  // Use the same approach to listen for mouse events at the document level
+  useEffect(() => {
+    if (draggingMorpion) {
+      document.addEventListener("mousemove", handleMouseMoveMorpion);
+      document.addEventListener("mouseup", handleMouseUpMorpion);
+    } else {
+      document.removeEventListener("mousemove", handleMouseMoveMorpion);
+      document.removeEventListener("mouseup", handleMouseUpMorpion);
+    }
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMoveMorpion);
+      document.removeEventListener("mouseup", handleMouseUpMorpion);
+    };
+  }, [draggingMorpion]);
+
   if (!isOpen) return null;
 
   return (
@@ -36,8 +52,6 @@ export default function MorpionModal({ isOpen, closeModal }) {
         left: `${morpionPosition.x}px`,
         position: "absolute",
       }}
-      onMouseMove={handleMouseMoveMorpion}
-      onMouseUp={handleMouseUpMorpion}
     >
       <div className="modal-header" onMouseDown={handleMouseDownMorpion}>
         <span>❌ Morpion</span>
