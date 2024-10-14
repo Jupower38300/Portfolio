@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import PongModal from "./components/PongModal";
 import MorpionModal from "./components/MorpionModal";
 import DemineurModal from "./components/DemineurModale";
-import SitesModal from './components/SitesModal'; // Adjust the import path as necessary
+import SitesModal from './components/SitesModal'; 
+import GodotModal from "./components/Godot"; // Import the new Godot modal// Adjust the import path as necessary
 
 export default function Home() {
   const [userInput, setUserInput] = useState([]);
@@ -14,6 +15,7 @@ export default function Home() {
   const [isMorpionModalOpen, setIsMorpionModalOpen] = useState(false);
   const [isPongModalOpen, setIsPongModalOpen] = useState(false);
   const [isSiteModalOpen, setIsSiteModalOpen] = useState(false);
+  const [isGodotModalOpen, setIsGodotModalOpen] = useState(false);
 
   // Code for the password
   useEffect(() => {
@@ -73,7 +75,13 @@ export default function Home() {
             <Apps
               nom="Jeux Godot"
               image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.diginoodles.com%2Fuser%2Fpages%2F04.projects%2F04.godot-game-engine%2FGodot_icon.svg.png&f=1&nofb=1&ipt=2cb73b023ca56610dbe9b70cf2f10c7d1c700a191d315e10789a93d07ba98d99&ipo=images"
-              path="/jeux"
+              path="#"
+              onClick={() => setIsGodotModalOpen(true)} // Open Sites modal on click
+            />
+
+            <GodotModal 
+                isOpen = {isGodotModalOpen}
+                closeModal={() => setIsGodotModalOpen(false)}
             />
 
             <Apps
