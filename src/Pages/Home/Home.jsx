@@ -10,7 +10,7 @@ import RealisationModal from "./components/Realisation"; // Import the Realisati
 
 export default function Home() {
   const [userInput, setUserInput] = useState([]);
-  const code = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "KeyB", "KeyQ", "NumpadAdd"];
+  const code = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowLeft", "ArrowRight", "ArrowRight", "KeyB", "KeyQ", "NumpadAdd"];
 
   const [isDemineurModalOpen, setIsDemineurModalOpen] = useState(false);
   const [isMorpionModalOpen, setIsMorpionModalOpen] = useState(false);
