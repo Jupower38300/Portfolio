@@ -6,7 +6,8 @@ import MorpionModal from "./components/MorpionModal";
 import DemineurModal from "./components/DemineurModale";
 import SitesModal from './components/SitesModal';
 import GodotModal from "./components/Godot";
-import RealisationModal from "./components/Realisation"; // Import the Realisation modal
+import RealisationModal from "./components/Realisation";
+import CV from "../../PDFs/CV.pdf" // Import the Realisation modal
 
 export default function Home() {
   const [userInput, setUserInput] = useState([]);
@@ -42,11 +43,13 @@ export default function Home() {
     };
   }, [userInput]);
 
-  function Buttonbar({ image }) {
+  function Buttonbar({ image, href}) {
     return (
       <div>
         <button className="button-desk">
+        <a href= {href}>
           <img src={image} alt="app Barre" />
+          </a>
         </button>
       </div>
     );
@@ -151,7 +154,7 @@ export default function Home() {
           <Buttonbar image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Windows_Settings_icon.svg/1092px-Windows_Settings_icon.svg.png" />
           <Buttonbar image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogospng.org%2Fdownload%2Fgoogle-chrome%2Flogo-google-chrome-1024.png&f=1&nofb=1&ipt=98244d1cacda3b3a33635266b0c7fa54abde0644c824fc65f87c3e918d948864&ipo=images" />
           <Buttonbar image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngkit.com%2Fpng%2Ffull%2F479-4799678_telephone-icon-in-white.png&f=1&nofb=1&ipt=c8d9401bdb3b38d160a8a93ad778e43dcc0f71bab48eac4b11cf278d0b74cffc&ipo=images" />
-          <Buttonbar image="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/ce572dc7-f6bc-4d9f-a140-fd183b1c15b7/dcl8rf1-76485ebc-d5dd-4c48-9880-dbe70ce58a53.png" />
+          <Buttonbar href={CV} image="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/ce572dc7-f6bc-4d9f-a140-fd183b1c15b7/dcl8rf1-76485ebc-d5dd-4c48-9880-dbe70ce58a53.png" />
         </div>
       </div>
     </div>
