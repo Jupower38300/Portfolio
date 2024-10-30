@@ -21,7 +21,6 @@ export default function RealisationModal({ isOpen, closeModal }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleMouseDown = (e) => {
-    console.log("Mouse down:", e.clientX, e.clientY); // Log de la position de la souris
     setDragging(true);
     setInitialPosition({
       x: e.clientX - modalPosition.x,
@@ -32,7 +31,6 @@ export default function RealisationModal({ isOpen, closeModal }) {
 
   const handleMouseMove = (e) => {
     if (dragging) {
-      console.log("Mouse move:", e.clientX, e.clientY); // Log de la position de la souris pendant le déplacement
       setModalPosition({
         x: e.clientX - initialPosition.x,
         y: e.clientY - initialPosition.y,
@@ -41,7 +39,6 @@ export default function RealisationModal({ isOpen, closeModal }) {
   };
 
   const handleMouseUp = () => {
-    console.log("Mouse up");
     setDragging(false);
   };
 
