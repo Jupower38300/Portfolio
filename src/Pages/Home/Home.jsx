@@ -8,7 +8,7 @@ import SitesModal from './components/SitesModal';
 import GodotModal from "./components/Godot";
 import RealisationModal from "./components/Realisation";// Import the Realisation modal
 import errorSound from "../../assets/error.mp3"
-
+import BBModal from "./components/BbModale";
 
 
 export default function Home() {
@@ -20,7 +20,8 @@ export default function Home() {
   const [isPongModalOpen, setIsPongModalOpen] = useState(false);
   const [isSiteModalOpen, setIsSiteModalOpen] = useState(false);
   const [isGodotModalOpen, setIsGodotModalOpen] = useState(false);
-  const [isRealisationModalOpen, setIsRealisationModalOpen] = useState(false); // State for Realisation modal
+  const [isRealisationModalOpen, setIsRealisationModalOpen] = useState(false);
+  const [isBBModalOpen, setIsBBModalOpen] = useState(false); // State for Realisation modal
   const audio = new Audio(errorSound);
   audio.volume = 0.2; // Ajuste le volume (0.0 à 1.0)
 
@@ -165,6 +166,18 @@ export default function Home() {
             <PongModal
               isOpen={isPongModalOpen}
               closeModal={() => setIsPongModalOpen(false)} // Close Pong modal
+            />
+
+            <Apps
+              nom="Bubble"
+              image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.freepnglogos.com%2Fuploads%2Fbubbles%2Ftransparent-bubble-clip-art-creation-creatures-4.png&f=1&nofb=1&ipt=188b2a246bef3be7b8eccff618452b37c3f33948425de1073071272e6fe661d8&ipo=images"
+              path="#"
+              onClick={() => setIsBBModalOpen(true)} // Open Pong modal on click
+            />
+
+            <BBModal
+              isOpen={isBBModalOpen}
+              closeModal={() => setIsBBModalOpen(false)} // Close Pong modal
             />
           </div>
         </div>
