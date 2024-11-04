@@ -9,7 +9,7 @@ import GodotModal from "./components/Godot";
 import RealisationModal from "./components/Realisation";// Import the Realisation modal
 import errorSound from "../../assets/error.mp3"
 import BBModal from "./components/BbModale";
-
+import ContactModal from "./components/contact";
 
 export default function Home() {
   const [userInput, setUserInput] = useState([]);
@@ -21,7 +21,10 @@ export default function Home() {
   const [isSiteModalOpen, setIsSiteModalOpen] = useState(false);
   const [isGodotModalOpen, setIsGodotModalOpen] = useState(false);
   const [isRealisationModalOpen, setIsRealisationModalOpen] = useState(false);
-  const [isBBModalOpen, setIsBBModalOpen] = useState(false); // State for Realisation modal
+  const [isBBModalOpen, setIsBBModalOpen] = useState(false); // State for Realisation modal4
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+
   const audio = new Audio(errorSound);
   audio.volume = 0.2; // Ajuste le volume (0.0 à 1.0)
 
@@ -66,17 +69,23 @@ export default function Home() {
   };
 }, [userInput]);
 
-  function Buttonbar({ image, href }) {
-    return (
-      <div>
-        <button className="button-desk">
-          <a href={href}>
-            <img src={image} alt="app Barre" />
-          </a>
-        </button>
-      </div>
-    );
-  }
+function Buttonbar({ image, href, onClick }) {
+  const handleClick = () => {
+    if (href) {
+      window.location.href = href; // Redirige vers l'URL si `href` est défini
+    } else if (onClick) {
+      onClick(); // Sinon, exécute `onClick` si défini
+    }
+  };
+
+  return (
+    <div>
+      <button className="button-desk" onClick={handleClick}>
+        <img src={image} alt="app Barre" />
+      </button>
+    </div>
+  );
+}
 
   function Apps({ nom, image, path, onClick }) {
     return (
@@ -179,6 +188,12 @@ export default function Home() {
               isOpen={isBBModalOpen}
               closeModal={() => setIsBBModalOpen(false)} // Close Pong modal
             />
+
+            
+            <ContactModal
+              isOpen={isContactModalOpen}
+              closeModal={() => setIsContactModalOpen(false)}
+            />
           </div>
         </div>
       </div>
@@ -188,7 +203,11 @@ export default function Home() {
             <Buttonbar className="windows-button" image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F2%2FWindows-Logo.png&f=1&nofb=1&ipt=138b43d7e04eae45170bacc5c0bfb5b0d3c40acdcd1212049e89421467301df2&ipo=images" />
             <Buttonbar className="params-button" image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Windows_Settings_icon.svg/1092px-Windows_Settings_icon.svg.png" />
             <Buttonbar className="google-button" image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogospng.org%2Fdownload%2Fgoogle-chrome%2Flogo-google-chrome-1024.png&f=1&nofb=1&ipt=98244d1cacda3b3a33635266b0c7fa54abde0644c824fc65f87c3e918d948864&ipo=images" />
-            <Buttonbar className="contact-button" image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngkit.com%2Fpng%2Ffull%2F479-4799678_telephone-icon-in-white.png&f=1&nofb=1&ipt=c8d9401bdb3b38d160a8a93ad778e43dcc0f71bab48eac4b11cf278d0b74cffc&ipo=images" />
+            <Buttonbar
+              className="contact-button"
+              image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngkit.com%2Fpng%2Ffull%2F479-4799678_telephone-icon-in-white.png&f=1&nofb=1&ipt=c8d9401bdb3b38d160a8a93ad778e43dcc0f71bab48eac4b11cf278d0b74cffc&ipo=images"
+              onClick={() => setIsContactModalOpen(true)} // Ouvre la modale de contact
+            />
             <Buttonbar className="pdf-button" href="https://drive.google.com/drive/folders/1-GupyG8E51SE2fr264dzrvA_DKl_Lhh2?usp=sharing" image="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/ce572dc7-f6bc-4d9f-a140-fd183b1c15b7/dcl8rf1-76485ebc-d5dd-4c48-9880-dbe70ce58a53.png" />
         </div>
       </div>
