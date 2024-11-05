@@ -65,6 +65,7 @@ export default function DemineurModal({ isOpen, closeModal }) {
           src="/demineur"
           title="Démineur"
           className="iframe-content"
+          sandbox="allow-scripts allow-same-origin"
         ></iframe>
       </div>
     </div>

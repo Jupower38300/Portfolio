@@ -73,7 +73,7 @@ export default function PongModal({ isOpen, closeModal }) {
           </button>
         </div>
         <div className="modal-content">
-          <iframe src="/pong" title="Pong" className="iframe-content"></iframe>
+          <iframe src="/pong" title="Pong" className="iframe-content" sandbox="allow-scripts allow-same-origin"></iframe>
         </div>
       </div>
     </div>

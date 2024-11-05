@@ -64,6 +64,7 @@ export default function MorpionModal({ isOpen, closeModal }) {
           src="/morpion"
           title="Morpion"
           className="iframe-content"
+          sandbox="allow-scripts allow-same-origin"
         ></iframe>
       </div>
     </div>

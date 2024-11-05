@@ -65,6 +65,7 @@ export default function BBModal({ isOpen, closeModal }) {
           src="/bbwrap"
           title="Bubble Bopple"
           className="iframe-content"
+          sandbox="allow-scripts allow-same-origin"
         ></iframe>
       </div>
     </div>
