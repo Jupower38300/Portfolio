@@ -35,6 +35,10 @@
   margin-left: 3em;
 }
 
+.game_demin {
+  cursor:default;
+}
+
 .game-info {
   display: flex;
   flex-direction: column;

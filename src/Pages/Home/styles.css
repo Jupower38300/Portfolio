@@ -188,6 +188,7 @@ h1 {
   border-radius: 10px 10px 0px 0px;
   user-select:none;
   height:200%;
+  cursor:default;
 }
 
 .iframe-content {
@@ -196,6 +197,7 @@ h1 {
   border: none;
   display: flex;
   justify-content: center;
+  cursor: default;
 }
 
 .site-grid {

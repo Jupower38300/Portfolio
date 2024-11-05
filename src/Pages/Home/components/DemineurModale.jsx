@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Demine from "../../Démineur/demine";
 
 
 export default function DemineurModal({ isOpen, closeModal }) {
@@ -61,12 +62,8 @@ export default function DemineurModal({ isOpen, closeModal }) {
         </button>
       </div>
       <div className="modal-content">
-        <iframe
-          src="/demineur"
-          title="Démineur"
-          className="iframe-content"
-          sandbox="allow-scripts allow-same-origin"
-        ></iframe>
+        <Demine className="iframe-content"/>
+
       </div>
     </div>
   );

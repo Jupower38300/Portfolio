@@ -32,6 +32,9 @@ export default function Home() {
  // Code for the password
  useEffect(() => {
   const handleKeyPress = (e) => {
+    // Empêche le code secret quand la modale Pong est ouverte
+    if (isPongModalOpen) return;
+
     const newInput = [...userInput, e.code]; // Ajoute le code de la touche pressée
 
     // Vérifier si l'entrée est correcte jusqu'à présent
@@ -39,26 +42,22 @@ export default function Home() {
 
     // Si la longueur de l'entrée utilisateur dépasse celle du code, réinitialiser
     if (newInput.length > code.length) {
-      // Réinitialiser l'entrée utilisateur
       setUserInput([]);
-      return; // Sort de la fonction
+      return;
     }
 
-    // Si l'entrée est correcte
     if (isCorrect) {
       setUserInput(newInput);
 
-      // Si la saisie est complète et correcte
       if (newInput.length === code.length) {
-        alert("Secret"); // Déclenche l'action secrète ici
-        setUserInput([]); // Réinitialise après succès
+        alert("Secret");
+        setUserInput([]);
       }
     } else {
-      // Si l'entrée est incorrecte et que c'est la deuxième touche ou plus
       if (userInput.length > 0) {
-        audio.play(); // Joue le son d'erreur
+        audio.play();
       }
-      setUserInput([]); // Réinitialise l'entrée utilisateur
+      setUserInput([]);
     }
   };
 
@@ -67,7 +66,8 @@ export default function Home() {
   return () => {
     window.removeEventListener("keydown", handleKeyPress);
   };
-}, [userInput]);
+}, [userInput, isPongModalOpen]);
+
 
 function Buttonbar({ image, href, onClick }) {
   const handleClick = () => {

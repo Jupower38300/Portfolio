@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Bbwrap from "../../BubbleWrap/bbwrap";
 
 
 export default function BBModal({ isOpen, closeModal }) {
@@ -61,12 +62,7 @@ export default function BBModal({ isOpen, closeModal }) {
         </button>
       </div>
       <div className="modal-content">
-        <iframe
-          src="/bbwrap"
-          title="Bubble Bopple"
-          className="iframe-content"
-          sandbox="allow-scripts allow-same-origin"
-        ></iframe>
+        <Bbwrap  className="iframe-content"/>
       </div>
     </div>
   );

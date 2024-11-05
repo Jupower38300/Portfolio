@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import "../styles.css"; // Ensure to include your modal styles
+import "../styles.css"; // Assurez-vous d'inclure vos styles de modale
+import Pong from "../../Pong/pong";
 
 export default function PongModal({ isOpen, closeModal }) {
   const [pongPosition, setPongPosition] = useState({ x: 200, y: 200 });
   const [draggingPong, setDraggingPong] = useState(false);
   const [initialPongPosition, setInitialPongPosition] = useState({ x: 0, y: 0 });
 
-  // Mouse down event to start dragging
+  // Mouse down event to start dragging from header only
   const handleMouseDownPong = (e) => {
     setDraggingPong(true);
     setInitialPongPosition({
@@ -62,18 +63,22 @@ export default function PongModal({ isOpen, closeModal }) {
           top: `${pongPosition.y}px`,
           left: `${pongPosition.x}px`,
           position: "absolute",
-          cursor: draggingPong ? 'grabbing' : 'grab', // Change cursor when dragging
         }}
-        onMouseDown={handleMouseDownPong} // Set mouse down event on the entire modal
       >
-        <div className="modal-header">
+        <div
+          className="modal-header"
+          onMouseDown={handleMouseDownPong} // Only the header can initiate dragging
+          style={{
+            cursor: draggingPong ? 'grabbing' : 'grab', // Change cursor when dragging
+          }}
+        >
           <span>🏓 Pong</span>
           <button className="close-btn" onClick={closeModal}>
             <strong>X</strong>
           </button>
         </div>
         <div className="modal-content">
-          <iframe src="/pong" title="Pong" className="iframe-content" sandbox="allow-scripts allow-same-origin"></iframe>
+          <Pong className="iframe-content" />
         </div>
       </div>
     </div>

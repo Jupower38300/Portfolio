@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Morpion from '../../Morpion/morpion';
 
 export default function MorpionModal({ isOpen, closeModal }) {
   const [morpionPosition, setMorpionPosition] = useState({ x: 150, y: 150 });
@@ -60,12 +61,7 @@ export default function MorpionModal({ isOpen, closeModal }) {
         </button>
       </div>
       <div className="modal-content">
-        <iframe
-          src="/morpion"
-          title="Morpion"
-          className="iframe-content"
-          sandbox="allow-scripts allow-same-origin"
-        ></iframe>
+        <Morpion className="iframe-content"/>
       </div>
     </div>
   );
