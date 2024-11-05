@@ -49,6 +49,7 @@ h1 {
   width: 3em;
   background: transparent;
   border: none;
+  cursor:pointer;
 }
 
 .button-desk img {
