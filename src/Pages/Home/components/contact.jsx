@@ -98,7 +98,6 @@ export default function ContactModal({ isOpen, closeModal }) {
                 style={{
                   display: 'flex', 
                   alignItems: 'center',
-                  cursor: 'pointer', 
                   padding: '10px 0',
                   borderBottom: index !== contacts.length - 1 ? '1px solid #ccc' : 'none',
                 }}
