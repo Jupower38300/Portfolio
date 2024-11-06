@@ -89,16 +89,22 @@ class Board extends React.Component {
 
   plantMines(data, height, width, mines) {
     let minesPlanted = 0;
-
+  
     while (minesPlanted < mines) {
       const randomx = this.getRandomNumber(width);
       const randomy = this.getRandomNumber(height);
+  
+      // Vérifie que la case en bas à gauche n'est pas sélectionnée
+      if (randomx === 0 && randomy === height - 1) {
+        continue;
+      }
+  
       if (!data[randomy][randomx].isMine) {
         data[randomy][randomx].isMine = true;
         minesPlanted++;
       }
     }
-
+  
     return data;
   }
 
